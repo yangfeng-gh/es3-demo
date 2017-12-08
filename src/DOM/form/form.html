@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>获取form的方式</title>
+</head>
+
+<body>
+    <div>
+        <form name="form1" action="" class="form-class">
+            <input type="text" value="input1">
+            <input type="text">
+            <input type="text">
+            <input type="text">
+        </form>
+    </div>
+    <script>
+        document.writeln(document.form1.className);
+        document.writeln(document.forms[0].className);
+        document.writeln(document.forms['form1'].className);
+    </script>
+</body>
+
+</html>

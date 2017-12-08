@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>动态form提交</title>
+    <script src="../lib/jquery/3rd/jquery-1.11.3.js" type="text/javascript"></script>
+</head>
+<body>
+
+<script>
+    $(function(){
+        $form = $('<form></form>');
+        $form.css({
+            "display":"none"
+        }).appendTo($("body"));
+        $form.attr({
+            action: 'http://suppliers.jxdd.com/suppliers/account/role/listRoles',
+            method: 'POST'
+        })
+        $input = $('<input/>');
+        $input.attr({
+            type: 'text',
+            name: 'modelcode',
+            value: '6200'
+        })
+        $form.append($input);
+        $btn = $('<input type="button" value="提交">')
+        $btn.appendTo($('body'));
+        $btn.on('click',function(){
+            $form.submit();
+        });
+    });
+</script>
+
+</body>
+</html>
