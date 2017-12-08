@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>XMLHttpRequest</title>
+  <style media="screen">
+    li {
+      list-style: none;
+    }
+
+    label {
+      display: inline-block;
+      width: 100px;
+      vertical-align: top;
+    }
+
+    [name='request'] {
+      margin-left: 100px;
+    }
+  </style>
+</head>
+
+<body>
+<ul>
+  <li><label for="result">username:</label><input type="text" id="username" value="yvan"></li>
+  <li><label for="result">result:</label><textarea id="result" rows="8" cols="80"></textarea></li>
+  <li>
+    <button type="button" name="request" onclick="ajax()">XMLHttpRequest请求</button>
+  </li>
+</ul>
+
+<script type="text/javascript">
+  /* eslint-disable */
+  function GetXmlHttpRequest() {
+    var xmlHttp = null;
+    try {
+      xmlHttp = new XMLHttpRequest();
+    } catch (e) {
+      try {
+        xmlHttp = new ActiveXObject('Microsoft.XMLHTTP');
+      } catch (e) {
+        xmlHttp = new ActiveXObject('Msxml2.XMLHTTP');
+      }
+    }
+    return xmlHttp;
+  }
+
+
+  var xmlHttp = GetXmlHttpRequest();
+
+  function ajax() {
+    if (xmlHttp != null) {
+      xmlHttp.onreadystatechange = function () {
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+          console.log(xmlHttp.responseText);
+          success();
+        }
+      };
+
+      var username = document.getElementById('username').value;
+      xmlHttp.open('get', 'http://192.168.2.55:9090/cors-demo/common?username=' + encodeURIComponent(username, 'utf-8'), true);
+      // xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      xmlHttp.send(null);
+    } else {
+      alert('your browser is not recognize XmlHttpRequest');
+    }
+  }
+
+  function success() {
+    document.getElementById('result').value = xmlHttp.responseText;
+  }
+</script>
+</body>
+
+</html>
