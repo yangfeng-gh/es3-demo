@@ -13,6 +13,7 @@ plugins:
 rules:
   indent: ["error", 2, { "SwitchCase": 1 }]
   quotes: ["off", "single"]
-  semi: ["error", "always"]
+  semi: ["error", "never"]
   no-console: ["error"]
+  no-unused-vars: ["off"]
 

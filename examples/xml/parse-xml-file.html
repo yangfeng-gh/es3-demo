@@ -3,6 +3,9 @@
 <body>
 <script type="text/javascript">
   /* eslint-disable */
+  /**
+   * 此方法只适用于ie,firefox
+   */
   var xmlDoc
   try //Internet Explorer
   {
@@ -17,8 +20,10 @@
   }
   try {
     xmlDoc.async = false;
-    xmlDoc.load("books.xml");
-    document.write("xmlDoc is loaded, ready for use");
+    xmlDoc.load("note.xml");
+    document.write("xmlDoc is loaded, ready for use <br>");
+    document.write(xmlDoc.documentElement.childNodes[1].childNodes[0].nodeValue);
+    console.log(xmlDoc)
   } catch (e) {
     alert(e.message);
   }
