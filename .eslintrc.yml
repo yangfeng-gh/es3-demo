@@ -12,7 +12,7 @@ plugins:
   - react
 rules:
   indent: ["error", 2, { "SwitchCase": 1 }]
-  quotes: ["error", "single"]
+  quotes: ["off", "single"]
   semi: ["error", "always"]
   no-console: ["error"]
 

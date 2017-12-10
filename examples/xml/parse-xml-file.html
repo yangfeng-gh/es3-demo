@@ -3,11 +3,12 @@
 <body>
 <script type="text/javascript">
   /* eslint-disable */
+  var xmlDoc
   try //Internet Explorer
   {
     xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
   } catch (e) {
-    try //Firefox, Mozilla, Opera, etc.
+    try //Firefox, Opera, etc.
     {
       xmlDoc = document.implementation.createDocument("", "", null);
     } catch (e) {
