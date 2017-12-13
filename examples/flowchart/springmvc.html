@@ -2,126 +2,129 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>flowchart.js · Playground</title>
-    <style type="text/css">
-        .end-element {
-            background-color: #FFCCFF;
+  <meta charset="utf-8">
+  <title>flowchart.js · Playground</title>
+  <style type="text/css">
+    .end-element {
+      background-color: #FFCCFF;
+    }
+  </style>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.0/raphael-min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="http://flowchart.js.org/flowchart-latest.js"></script>
+  <!-- <script src="../release/flowchart.min.js"></script> -->
+  <script>
+    /*eslint-disable*/
+    window.onload = function () {
+      var runBtn = document.getElementById("run"),
+        codeDiv = document.getElementById("code"),
+        chart;
+
+      (runBtn.onclick = function () {
+        var code = codeDiv.textContent;
+
+        if (chart) {
+          chart.clean();
         }
-    </style>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.0/raphael-min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="http://flowchart.js.org/flowchart-latest.js"></script>
-    <!-- <script src="../release/flowchart.min.js"></script> -->
-    <script>
-        window.onload = function() {
-            var runBtn = document.getElementById("run"),
-                codeDiv = document.getElementById("code"),
-                chart;
 
-            (runBtn.onclick = function() {
-                var code = codeDiv.textContent;
+        chart = flowchart.parse(code);
+        chart.drawSVG('canvas', {
+          // 'x': 30,
+          // 'y': 50,
+          'line-width': 3,
+          'maxWidth': 3, //ensures the flowcharts fits within a certian width
+          'line-length': 50,
+          'text-margin': 10,
+          'font-size': 14,
+          'font': 'normal',
+          'font-family': 'Helvetica',
+          'font-weight': 'normal',
+          'font-color': 'black',
+          'line-color': 'black',
+          'element-color': 'black',
+          'fill': 'white',
+          'yes-text': 'yes',
+          'no-text': 'no',
+          'arrow-end': 'block',
+          'scale': 1,
+          'symbols': {
+            'start': {
+              'font-color': 'red',
+              'element-color': 'green',
+              'fill': 'yellow'
+            },
+            'end': {
+              'class': 'end-element'
+            }
+          },
+          'flowstate': {
+            'past': {
+              'fill': '#CCCCCC',
+              'font-size': 12
+            },
+            'current': {
+              'fill': 'yellow',
+              'font-color': 'red',
+              'font-weight': 'bold'
+            },
+            'future': {
+              'fill': '#FFFF99'
+            },
+            'request': {
+              'fill': 'pink'
+            },
+            'invalid': {
+              'fill': '#444444'
+            },
+            'approved': {
+              'fill': '#58C4A3',
+              'font-size': 12,
+              'yes-text': '是',
+              'no-text': '否'
+            },
+            'rejected': {
+              'fill': '#C45879',
+              'font-size': 12,
+              'yes-text': 'n/a',
+              'no-text': 'REJECTED'
+            }
+          }
+        });
 
-                if (chart) {
-                    chart.clean();
-                }
-
-                chart = flowchart.parse(code);
-                chart.drawSVG('canvas', {
-                    // 'x': 30,
-                    // 'y': 50,
-                    'line-width': 3,
-                    'maxWidth': 3, //ensures the flowcharts fits within a certian width
-                    'line-length': 50,
-                    'text-margin': 10,
-                    'font-size': 14,
-                    'font': 'normal',
-                    'font-family': 'Helvetica',
-                    'font-weight': 'normal',
-                    'font-color': 'black',
-                    'line-color': 'black',
-                    'element-color': 'black',
-                    'fill': 'white',
-                    'yes-text': 'yes',
-                    'no-text': 'no',
-                    'arrow-end': 'block',
-                    'scale': 1,
-                    'symbols': {
-                        'start': {
-                            'font-color': 'red',
-                            'element-color': 'green',
-                            'fill': 'yellow'
-                        },
-                        'end': {
-                            'class': 'end-element'
-                        }
-                    },
-                    'flowstate': {
-                        'past': {
-                            'fill': '#CCCCCC',
-                            'font-size': 12
-                        },
-                        'current': {
-                            'fill': 'yellow',
-                            'font-color': 'red',
-                            'font-weight': 'bold'
-                        },
-                        'future': {
-                            'fill': '#FFFF99'
-                        },
-                        'request': {
-                            'fill': 'pink'
-                        },
-                        'invalid': {
-                            'fill': '#444444'
-                        },
-                        'approved': {
-                            'fill': '#58C4A3',
-                            'font-size': 12,
-                            'yes-text': '是',
-                            'no-text': '否'
-                        },
-                        'rejected': {
-                            'fill': '#C45879',
-                            'font-size': 12,
-                            'yes-text': 'n/a',
-                            'no-text': 'REJECTED'
-                        }
-                    }
-                });
-
-                $('[id^=sub1]').click(function() {
-                    alert('info here');
-                });
-            })();
-        };
-    </script>
+        $('[id^=sub1]').click(function () {
+          alert('info here');
+        });
+      })();
+    };
+  </script>
 </head>
 
 <body>
 <div style="display:none">
-<div id="code" style="width: 100%;" rows="11">
-st=>start: 用户发起请求|past
-e=>end: 得到最终的视图响应给用户
-sub1=>subroutine: 前端控制器DispatcherServler接收到请求|request
-sub2=>subroutine: 调用HandlerMapping,依据url和配置规则查找相应的handler返回|request
-sub3=>subroutine: 修改资质信息重新申请入驻|request
-io=>inputoutput: 查询API|request
-cond=>condition: 是否申请过入驻?|approved
-io2=>inputoutput: 查询API|request
-cond2=>condition: 是否审核通过?|approved
-op1=>operation: 跳转到资质申请页面|current
-op2=>operation: 跳转到审核结果查询页面|current
-op3=>operation: 跳转到主页|current
+  <div id="code" style="width: 100%;" rows="11">
+    st=>start: 用户发起请求|past
+    e=>end: 得到最终的视图响应给用户
+    sub1=>subroutine: 前端控制器DispatcherServler接收到请求|request
+    sub2=>subroutine: 调用HandlerMapping,依据url和配置规则查找相应的handler返回|request
+    sub3=>subroutine: 修改资质信息重新申请入驻|request
+    io=>inputoutput: 查询API|request
+    cond=>condition: 是否申请过入驻?|approved
+    io2=>inputoutput: 查询API|request
+    cond2=>condition: 是否审核通过?|approved
+    op1=>operation: 跳转到资质申请页面|current
+    op2=>operation: 跳转到审核结果查询页面|current
+    op3=>operation: 跳转到主页|current
 
-st->sub1(right)->io->cond
-cond(no, right)->op1->sub2->e
-cond(yes)->io2->cond2
-cond2(yes)->op3->e
-cond2(no)->op2->sub3->e
+    st->sub1(right)->io->cond
+    cond(no, right)->op1->sub2->e
+    cond(yes)->io2->cond2
+    cond2(yes)->op3->e
+    cond2(no)->op2->sub3->e
+  </div>
 </div>
+<div style="display:none">
+  <button id="run" type="button">Run</button>
 </div>
-<div style="display:none"><button id="run" type="button">Run</button></div>
 <div id="canvas"></div>
 </body>
 
