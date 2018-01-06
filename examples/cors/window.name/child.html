@@ -8,11 +8,11 @@
     <title>parent</title>
 </head>
 
-<iframe id="myFrame" src="http://localhost:9090/upload-demo/upload.jsp" width="500" height="300"></iframe>
+<iframe id="myFrame" src="http://localhost:8880/cors-demo/common" width="500" height="300"></iframe>
 
 <script type="text/javascript">
-    var data = document.getElementById('myFrame').contentWindow.name;
-    console.log(data);
+    var contentWindow = document.getElementById('myFrame').contentWindow;
+    console.log(contentWindow);
 </script>
 
 </html>
