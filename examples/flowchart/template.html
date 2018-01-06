@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>flowchart.js · Playground</title>
+  <title>flowchart.js Playground</title>
   <style type="text/css">
     .end-element {
       background-color: #FFCCFF;
@@ -101,7 +101,7 @@
 
 <body>
 <div>
-  <div id="code" style="width: 100%;" rows="11">
+  <textarea id="code" style="width: 100%;" rows="20">
     st=>start: 进入登录页面|past
     e=>end: 完成
     sub1=>subroutine: 登录成功|request
@@ -120,7 +120,7 @@
     cond(yes)->io2->cond2
     cond2(yes)->op3->e
     cond2(no)->op2->sub3->e
-  </div>
+  </textarea>
 </div>
 <div>
   <button id="run" type="button">Run</button>
