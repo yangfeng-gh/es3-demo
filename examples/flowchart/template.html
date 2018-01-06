@@ -19,7 +19,6 @@
       var runBtn = document.getElementById("run"),
         codeDiv = document.getElementById("code"),
         chart;
-        chart;
 
       (runBtn.onclick = function () {
         var code = codeDiv.textContent;
@@ -101,7 +100,7 @@
 </head>
 
 <body>
-<div style="display:none">
+<div>
   <div id="code" style="width: 100%;" rows="11">
     st=>start: 进入登录页面|past
     e=>end: 完成
@@ -123,7 +122,7 @@
     cond2(no)->op2->sub3->e
   </div>
 </div>
-<div style="display:none">
+<div>
   <button id="run" type="button">Run</button>
 </div>
 <div id="canvas"></div>
