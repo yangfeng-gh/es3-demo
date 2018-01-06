@@ -21,6 +21,7 @@
     try {
       parent.location.hash = 'somedata';
     } catch (e) {
+      // ie, chrome不允许修改不同源页面的hash,所以需要一个要修改页面的同源代理a2.html
       var ifrproxy = document.createElement('iframe');
       ifrproxy.style.display = 'none';
       ifrproxy.src = 'http://a.yf.com/hash/a2.html#somedata2';
