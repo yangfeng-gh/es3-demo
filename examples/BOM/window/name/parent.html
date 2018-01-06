@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>parent</title>
+</head>
+
+<iframe id="myFrame" src="http://localhost:9090/upload-demo/upload.jsp" width="500" height="300"></iframe>
+
+<script type="text/javascript">
+    function openWindow() {
+        window.open('http://localhost:9090/upload-demo/upload.jsp', 'myWindow', 'width=200,height=100');
+    }
+
+    function getData() {
+        var data = document.getElementById('myFrame').contentWindow.name;
+    }
+</script>
+
+<input type="button" value="打开子窗口" onclick="openWindow()" />
+<input type="button" value="获取不同源网页内容" onclick="getData()" />
+
+</html>
