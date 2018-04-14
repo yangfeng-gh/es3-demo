@@ -1,5 +1,5 @@
 {
-  "name": "js-demo",
+  "name": "es3-demo",
   "version": "1.0.0",
   "description": "javascript excercise",
   "homepage": "http://www.yvan.com",
@@ -17,10 +17,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yangfeng-gh/js-demo"
+    "url": "https://github.com/yangfeng-gh/es3-demo"
   },
   "bugs": {
-    "url": "https://github.com/yangfeng-gh/js-demo/issues"
+    "url": "https://github.com/yangfeng-gh/es3-demo/issues"
   },
   "author": "yvan",
   "license": "ISC",
