@@ -39,31 +39,29 @@
       top: 0;
     }
   </style>
+
   <script type="text/javascript">
-
     $(function () {
-
       window.onscroll = function () {
-        $("#d4").css("top", getScrollTop());
+        $('#d4').css('top', getScrollTop());
       };
 
       document.onmousemove = function (e) {
-        if (e == null) {
-          e = window.event;
-        }
-        var html = "screenX:" + e.screenX + "<br/>";
-        html += "screenY:" + e.screenY + "<br/><br/>";
-        html += "clientX:" + e.clientX + "<br/>";
-        html += "clientY:" + e.clientY + "<br/><br/>";
+        var html;
+        if (e == null) e = window.event;
+        html = 'screenX:' + e.screenX + '<br/>';
+        html += 'screenY:' + e.screenY + '<br/><br/>';
+        html += 'clientX:' + e.clientX + '<br/>';
+        html += 'clientY:' + e.clientY + '<br/><br/>';
         if (e.pageX == null) {
-          html += "pageX:" + e.x + "<br/>";
-          html += "pageY:" + e.y + "<br/>";
+          html += 'pageX:' + e.x + '<br/>';
+          html += 'pageY:' + e.y + '<br/>';
         } else {
-          html += "pageX:" + e.pageX + "<br/>";
-          html += "pageY:" + e.pageY + "<br/>";
+          html += 'pageX:' + e.pageX + '<br/>';
+          html += 'pageY:' + e.pageY + '<br/>';
         }
 
-        $("#d4").html(html);
+        $('#d4').html(html);
       };
     });
 
