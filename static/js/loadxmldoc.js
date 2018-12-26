@@ -1,16 +1,14 @@
 /* eslint-disable */
 
 function loadXMLDoc(dname) {
-  try //Internet Explorer
-  {
+  try {
+    //Internet Explorer
     var xmlDoc = new ActiveXObject('Microsoft.XMLDOM');
-  }
-  catch (e) {
-    try //Firefox, Mozilla, Opera, etc.
-    {
+  } catch (e) {
+    try {
+      //Firefox, Mozilla, Opera, etc.
       xmlDoc = document.implementation.createDocument('', '', null);
-    }
-    catch (e) {
+    } catch (e) {
       alert(e.message);
     }
   }
@@ -18,8 +16,7 @@ function loadXMLDoc(dname) {
     xmlDoc.async = false;
     xmlDoc.load(dname);
     return (xmlDoc);
-  }
-  catch (e) {
+  } catch (e) {
     alert(e.message);
   }
   return (null);
